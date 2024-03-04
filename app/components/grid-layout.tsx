@@ -8,6 +8,7 @@ import 'react-resizable/css/styles.css';
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 // Define your initial layouts for each breakpoint
+// const initialLayouts = {
 const initialLayouts = {
   xl: [
     { i: '1', x: 0, y: 0, w: 2, h: 1 },
@@ -39,17 +40,17 @@ const initialLayouts = {
   ],
   sm: [
     { i: '1', x: 0, y: 0, w: 2, h: 2 },
-      { i: '2', x: 0, y: 2, w: 2, h: 1 },
-      { i: '3', x: 0, y: 3, w: 1, h: 1 },
-      { i: '4', x: 1, y: 3, w: 1, h: 2 },
-      { i: '5', x: 0, y: 4, w: 1, h: 1 },
-      { i: '6', x: 0, y: 5, w: 1, h: 1 },
-      { i: '7', x: 1, y: 5, w: 1, h: 1 },
-      { i: '8', x: 0, y: 6, w: 2, h: 1 },
-      { i: '9', x: 0, y: 7, w: 1, h: 2 },
-      { i: '10', x: 1, y: 7, w: 1, h: 1 },
-      { i: '11', x: 1, y: 8, w: 1, h: 1 },
-      { i: '12', x: 0, y: 9, w: 2, h: 2 },
+    { i: '2', x: 0, y: 2, w: 2, h: 1 },
+    { i: '3', x: 0, y: 3, w: 1, h: 1 },
+    { i: '4', x: 1, y: 3, w: 1, h: 2 },
+    { i: '5', x: 0, y: 4, w: 1, h: 1 },
+    { i: '6', x: 0, y: 5, w: 1, h: 1 },
+    { i: '7', x: 1, y: 5, w: 1, h: 1 },
+    { i: '8', x: 0, y: 6, w: 2, h: 1 },
+    { i: '9', x: 0, y: 7, w: 1, h: 2 },
+    { i: '10', x: 1, y: 7, w: 1, h: 1 },
+    { i: '11', x: 1, y: 8, w: 1, h: 1 },
+    { i: '12', x: 0, y: 9, w: 2, h: 2 },
   ],
 };
 
@@ -74,11 +75,13 @@ const MyGridLayout = () => {
     return () => window.removeEventListener('resize', updateRowHeight); // Cleanup
   }, []);
 
-  // const gridItems = Array.from({ length: 12 }, (_, i) => i + 1).map(i => (
-  //   <div key={i} className="bg-white text-black flex items-center justify-center">
-  //     <span>{i}</span>
-  //   </div>
-  // ));
+  const gridItems = Array.from({ length: 12 }, (_, i) => i + 1).map(i => (
+    <div key={i} className="bg-white text-black flex items-center justify-center">
+      <span>{i}</span>
+    </div>
+  ));
+
+
 
   return (
     <ResponsiveGridLayout
@@ -97,7 +100,7 @@ const MyGridLayout = () => {
       {Object.keys(initialLayouts.xl).map(index => {
         const key = (parseInt(index) + 1).toString();
         return (
-          <div key={key} className="bg-white text-black flex items-center justify-center">
+          <div key={key} className="bg-white text-black flex items-center justify-center" style={{height: '100%'}}>
             <span>{key}</span>
           </div>
         );
